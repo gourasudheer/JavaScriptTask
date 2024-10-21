@@ -1,0 +1,58 @@
+<style>
+    body{
+        margin: 10%;
+        height: 10%;
+        width: 20%;
+        padding: 5px;
+        border: 50%;
+        font-family: sans-serif;
+        font-weight: bold;
+        background: blueviolet;
+        justify-content: center;
+        align-items: center;
+        box-sizing: content-box;
+        cursor: pointer;
+    }
+    .username-container{
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        border-radius: 2%;
+        border: 10px;
+        height: 10%;
+        width: 10%;
+
+
+    }
+</style>
+<div class="username-container">
+    <form id="username-form">
+    <label for="Username">Username</label>
+    <input type="text" id="Username" required>
+    <div class=" password-Container">
+        <label for="password">password</label>
+        <input type="password" id="password" required>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+</div>
+<script>
+    document.getElementById("username-form").addEventListener("submit", function(event){
+            event.preventDefault();
+            const Username = document.getElementById("username");
+            const password = document.getElementById("password");
+            const usernameError = document.getElementById("username-error");
+            const passwordError = document.getElementById("password-error");
+            let valid = true;
+            if(Username.length < 6){
+                usernameError.style.display="block";
+                valid = false;
+            }
+            const passwordPattern = /^(?=.*[A-Z][a-z][0-9])(?=.*[!@#$%^&*])/;
+            if (password.length < 8 || !passwordPattern.test(password)) {
+                    passwordError.style.display = "block";
+                    valid = false;
+            }
+        alert("Details submitted");
+    });
+</script>
